@@ -10,10 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    main_clone:
+        title: 'Cloning main repository...'
+        type: git-clone
+        repo: https://github.com/cliberona/PipeLine
+        revision: 'master'
+        git: cliberona
+    PrintFileList:
+        title: 'Listing files'
+        image: alpine:latest
+        commands:
+            - 'ls -l'
